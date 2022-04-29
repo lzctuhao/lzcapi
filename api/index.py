@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 
-str="{'a':1}"
+str={'a':1}
 class handler(BaseHTTPRequestHandler):
  
     def do_GET(self):
