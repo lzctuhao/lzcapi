@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 
-str='{"note":"推心置腹的谈话就是心灵的展示。期待你的提问。"}'
+str='{"note":"推心置腹的谈话就是心灵的展示。期待你的提问！" , "by":"lzc的匿名提问箱"}'
 
 class handler(BaseHTTPRequestHandler):
  
