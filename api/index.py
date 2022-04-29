@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 
-str="{'a':"输入"}"
+str="{'a':'输入'}"
 
 class handler(BaseHTTPRequestHandler):
  
