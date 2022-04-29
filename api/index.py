@@ -1,4 +1,4 @@
-note="推心置腹的谈话就是心灵的展示。期待你的提问！"
+note="愉快的谈话胜似一切佳肴美馔。"
 by="lzc的匿名提问箱"
 
 from http.server import BaseHTTPRequestHandler
