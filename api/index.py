@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 
-str="{'a':1}"
+str="{'a':"输入"}"
 
 class handler(BaseHTTPRequestHandler):
  
@@ -8,5 +8,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
-        self.wfile.write(str.json())
+        self.wfile.write(str)
         return
