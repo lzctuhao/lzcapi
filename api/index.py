@@ -17,5 +17,5 @@ class handler(BaseHTTPRequestHandler):
         
         dic["path"]=self.path
         
-        self.wfile.write("test")
+        self.wfile.write("test".encode())
         return
