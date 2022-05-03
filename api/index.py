@@ -3,6 +3,7 @@ by="lzc的匿名提问箱"
 
 import time
 import json
+from urllib import parse
 from http.server import BaseHTTPRequestHandler
 
 time_str=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
