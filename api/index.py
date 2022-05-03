@@ -5,7 +5,7 @@ import time
 from http.server import BaseHTTPRequestHandler
 
 time_str=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-str='{"note":"'+note+'" , "by":"'+by+'",time:"'+time_str+'"}'
+str='{"note":"'+note+'" , "by":"'+by+'","time":"'+time_str+'"}'
 
 class handler(BaseHTTPRequestHandler):
  
