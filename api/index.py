@@ -1,9 +1,11 @@
 note="愉快的谈话胜似一切佳肴美馔。"
 by="lzc的匿名提问箱"
 
+import time
 from http.server import BaseHTTPRequestHandler
 
-str='{"note":"'+note+'" , "by":"'+by+'"}'
+time_str=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+str='{"note":"'+note+'" , "by":"'+by+'",time:"'+time_str+'"}'
 
 class handler(BaseHTTPRequestHandler):
  
