@@ -20,7 +20,7 @@ class handler(BaseHTTPRequestHandler):
         dic["path"]=self.path
         
         # 获取全部参数的键值组成字典query_dict
-        result = parse.urlparse(urldata)
+        result = parse.urlparse(self.path)
         query_dict = parse.parse_qs(result.query)
         
         #在dic中增加所有params
