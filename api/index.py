@@ -6,7 +6,8 @@ import json
 from http.server import BaseHTTPRequestHandler
 
 time_str=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-dic={"note":note , "by":by, "time":time_str , "timezone":"GMT, UTC+0"}
+timezone=time.strftime('%z', time.localtime())
+dic={"note":note , "by":by, "build_time":time_str , "timezone":timezone}
 
 class handler(BaseHTTPRequestHandler):
  
