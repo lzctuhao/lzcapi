@@ -2,6 +2,7 @@ note="愉快的谈话胜似一切佳肴美馔。"
 by="lzc的匿名提问箱"
 
 import time
+import json
 from http.server import BaseHTTPRequestHandler
 
 time_str=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
@@ -17,5 +18,5 @@ class handler(BaseHTTPRequestHandler):
         
         dic["path"]=self.path
         
-        self.wfile.write("test".encode())
+        self.wfile.write(json.dumps(dic).encode())
         return
