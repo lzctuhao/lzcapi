@@ -16,8 +16,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
-        
-        dic["path"]=self.path
-        
         self.wfile.write(dumps(dic))
         return
