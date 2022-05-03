@@ -1,7 +1,23 @@
-from flask import Flask, Response
-app = Flask(__name__)
+note="愉快的谈话胜似一切佳肴美馔。"
+by="lzc的匿名提问箱"
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    return Response("<h1>Flask</h1><p>You visited: /%s</p>" % (path), mimetype="text/html")
+import time
+from json import dumps
+
+from http.server import BaseHTTPRequestHandler
+
+time_str=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+dic={"note":note , "by":by, "time":time_str , "timezone":"GMT, UTC+0"}
+
+class handler(BaseHTTPRequestHandler):
+ 
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        
+        dic["path"]=self.path
+        
+        self.wfile.write(dumps(dic))
+        return
