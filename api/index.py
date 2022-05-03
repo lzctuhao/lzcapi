@@ -2,7 +2,6 @@ note="愉快的谈话胜似一切佳肴美馔。"
 by="lzc的匿名提问箱"
 
 import time
-from json import dumps
 
 from http.server import BaseHTTPRequestHandler
 
@@ -16,5 +15,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
-        self.wfile.write(dumps(dic))
+        self.wfile.write(dic)
         return
