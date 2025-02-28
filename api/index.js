@@ -71,15 +71,15 @@ module.exports = (req, res) => {
   }
 
   /*业务逻辑 */
+  const ver="1.4.5";
   const time_string=getBeijingTime();
   const method=req.method;
   let name="";
   if (method==='GET') {
-    name=(req.query&&req.query.name) ? req.query.name : "(your name please?)"; 
+    name=(req.query&&req.query.name) ? req.query.name : "(your name please?) "; 
   } else if (method==='POST') {
-    name=(req.body&&req.body.name) ? req.body.name : "(your name please?)";
+    name=(req.body&&req.body.name) ? req.body.name : "(your name please?) ";
   }
-  const note= (name=="")?"Failed to get `name` parameter. For GET method, please add the parameter name to the URL, and for POST method, please add the name field in JSON format to the request body. \n `name`参数获取失败，GET方式请在URL中加入参数name，POST方式请在请求体中加入JSON格式的name字段。":"The `name` parameter was obtained successfully!";
-  const ver="1.4.4";
-  res.status(200).json({ message: `Hello ${name}! This is lzc\'s api powered by Vercel. HelloProgramVer: ${ver}`,method:method,time:time_string,note: note});
+  const note= (name=="(your name please?) ")?"Failed to get `name` parameter. For GET method, please add the parameter name to the URL, and for POST method, please add the name field in JSON format to the request body. \n `name`参数获取失败，GET方式请在URL中加入参数name，POST方式请在请求体中加入JSON格式的name字段。":"The `name` parameter was obtained successfully!";
+  res.status(200).json({ message: `Hello ${name}! This is lzc\'s api powered by Vercel. HelloProgramVer: ${ver}`,method:method,time:time_string,version:`${ver}`,note: note});
 };
