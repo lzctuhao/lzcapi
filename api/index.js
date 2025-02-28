@@ -73,7 +73,7 @@ module.exports = (req, res) => {
   /*业务逻辑 */
   const time_string=getBeijingTime();
   const method=req.method;
-  const name=req.body || "(Please include your name in the request body)";
+  const name=(req.body&&req.body.name) ? req.body.name : "(Please include your name in the request body in json format)";
   const ver="1.4.2";
   res.status(200).json({ message: `Hello, ${name}! This is lzc\'s api powered by Vercel. HelloProgramVer: ${ver}.`,method:method,time:time_string});
 };
