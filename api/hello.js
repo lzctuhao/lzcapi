@@ -71,15 +71,10 @@ function getBeijingTime(format = 'full') {
 }
 
 const handler = (req, res) => {
-  const d = new Date()
-  if (req.method === 'GET') {
-    res.status(200).json({ message: 'Hello from lzc\'s Vercel (GET)',time:getBeijingTime()});
-  } else if (req.method === 'POST') {
-    const name=req.body.name || "Anonymous";
-    res.status(200).json({ message: `Hello, ${name}! (POST)`,time:getBeijingTime()});
-  } else {
-    res.status(405).json({ error: 'Method Not Allowed',time:getBeijingTime()});
-  }
+  const time_string=getBeijingTime();
+  const method=req.method;
+  const name=req.body?req.body.name:"(Please include your name in the request body)";
+  res.status(200).json({ message: `Hello, ${name}! This is lzc\'s api powered by Vercel.`,method:method,time:time_string});
 }
 
 module.exports = allowCors(handler)
