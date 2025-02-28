@@ -31,15 +31,15 @@ function getBeijingTime(format = 'full') {
 
   // 处理不同格式需求
   switch(format) {
-    case 'full':
-      return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    case 'full':// 输出: "2024-03-21 15:45:30 (UTC+8)"（示例时间）
+      return `${year}-${month}-${day} ${hour}:${minute}:${second} (UTC+8)`;
     case 'date':
       return `${year}-${month}-${day}`;
     case 'time':
       return `${hour}:${minute}:${second}`;
-    case 'iso':
+    case 'iso':// 输出: "2024-03-21T07:45:30.000Z"（对应的UTC时间）
       return new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' })).toISOString();
-    case 'object':
+    case 'object':// 输出: { year:2024, month:03, day:21, hour:15, minute:45, second:30 }
       return {
         year: parseInt(year),
         month: parseInt(month),
@@ -74,6 +74,6 @@ module.exports = (req, res) => {
   const time_string=getBeijingTime();
   const method=req.method;
   const name=req.body || "(Please include your name in the request body)";
-  const ver="1.4.1";
-  res.status(200).json({ message: `Hello, ${name}! This is lzc\'s api powered by Vercel. Hello Program Ver: ${ver}`,method:method,time:time_string});
+  const ver="1.4.2";
+  res.status(200).json({ message: `Hello, ${name}! This is lzc\'s api powered by Vercel. HelloProgramVer: ${ver}.`,method:method,time:time_string});
 };
