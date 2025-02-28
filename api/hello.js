@@ -1,20 +1,3 @@
-const allowCors = fn => async (req, res) => {
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
-  if (req.method === 'OPTIONS') {
-    res.status(200).end()
-    return
-  }
-  return await fn(req, res)
-}
-
 function getBeijingTime(format = 'full') {
   // 创建日期对象并配置时区参数
   const date = new Date();
@@ -70,11 +53,27 @@ function getBeijingTime(format = 'full') {
   }
 }
 
-const handler = (req, res) => {
+module.exports = (req, res) => {
+
+  /*设置标头 */
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  /*业务逻辑 */
   const time_string=getBeijingTime();
   const method=req.method;
-  const name=req.body?req.body.name:"(Please include your name in the request body)";
-  res.status(200).json({ message: `Hello, ${name}! This is lzc\'s api powered by Vercel.`,method:method,time:time_string});
-}
-
-module.exports = allowCors(handler)
+  const name=req.body || "(Please include your name in the request body)";
+  const ver="1.4.1";
+  res.status(200).json({ message: `Hello, ${name}! This is lzc\'s api powered by Vercel. Hello Program Ver: ${ver}`,method:method,time:time_string});
+};
